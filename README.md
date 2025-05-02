@@ -1,9 +1,8 @@
 # Ex.05 Design a Website for Server Side Processing
-## Date:
-
+## Date:2-05-2025
+NAME : CHOLIMGAPURAM SAI LIKITHA [212224230046]
 ## AIM:
  To design a website to calculate the power of a lamp filament in an incandescent bulb in the server side. 
-
 
 ## FORMULA:
 P = I<sup>2</sup>R
@@ -32,12 +31,90 @@ Create a HTML file to implement form based input and output.
 Publish the website in the given URL.
 
 ## PROGRAM :
+### math.html
+```
+<html lang="en">
+<head>
+    <style>
+        .Calculate {
+            width: 30%;
+            padding: 20px;
+            margin: auto;
+            background-color: rgb(25, 141, 180);
+            text-align: center;
+            border-radius:20px;
+        }
+        label {
+            font-size: 20px;
+        }
+        p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color:rgb(129, 137, 14);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
 
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculating Power of a Lamp</h1>
+    <div class="Calculate">
+        <form action="{% url 'home' %}" method="post">
+            {% csrf_token %}
+            <label>Intensity:</label><br>
+            <input type="text" name="intensity-input"><br>
 
+            <label>Resistance:</label><br>
+            <input type="text" name="resistance-input"><br>
+
+            <button type="submit">Calculate</button>
+
+            <p>The power of the lamp is: {{ output }}</p>
+        </form>
+    </div>
+</body>
+</html>
+```
+### views.py
+```
+from django.shortcuts import render
+def power(request):
+    if request.method=='POST':
+        intesity_value=int(request.POST.get('intensity-input'))
+        resistance_value=int(request.POST.get('resistance-input'))
+        power = (intesity_value ** 2) * resistance_value
+        return render(request, 'mathapp/math.html',{'output':power})
+    return render (request, 'mathapp/math.html')
+```
+### urls.py
+```
+from django.contrib import admin
+from django.urls import path
+from mathapp import views
+
+urlpatterns = [
+    #path("admin/", admin.site.urls),
+    path('',views.power,name='home')
+]
+```
 ## SERVER SIDE PROCESSING:
-
+![mathapp](https://github.com/user-attachments/assets/4f40a162-e087-4775-a98e-6a109226ef2f)
 
 ## HOMEPAGE:
+![Screenshot 2025-05-02 170344](https://github.com/user-attachments/assets/c348fe2e-6eb8-4892-bc6f-30e230121105)
 
 
 ## RESULT:
