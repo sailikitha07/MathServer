@@ -1,86 +1,54 @@
-<html>
+<html lang="en">
 <head>
-  <style>
-    body {
-      background-image: url('C:\Users\admin\MathServer\likitha\mathapp\templates\mathapp\math.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .overlay {
-      background: linear-gradient(135deg, rgba(255, 255, 0, 0.5), rgba(3, 65, 94, 0.7)); /* Gradient overlay */
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    h1 {
-      color: white;
-      font-style: oblique;
-      text-align: center;
-      font-size: 70px;
-    }
-    .inputs {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(72, 146, 159, 0.8); /* Slightly transparent background */
-      width: 400px;
-      height: 300px;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 10px;
-    }
-    label {
-      font-size: 20px;
-      color: rgb(22, 24, 12);
-    }
-    input {
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-      width: 100%;
-    }
-    button {
-      padding: 10px;
-      background-color: rgb(191, 51, 96);
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-  </style>
+    <style>
+        .Calculate {
+            width: 30%;
+            padding: 20px;
+            margin: auto;
+            background-color: rgb(25, 141, 180);
+            text-align: center;
+            border-radius:20px;
+        }
+        label {
+            font-size: 20px;
+        }
+        p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color:rgb(129, 137, 14);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+
+        }
+    </style>
+    <title>Document</title>
 </head>
 <body>
-  <div class="overlay">
-    <h1>Power of a Lamp Filament</h1><br>
-    <div class="inputs">
-      <form method="POST">
-        {% csrf_token %}
-        <label for="input1">Enter the intensity of the bulb:</label>
-        <input type="number" id="input1" name="intensity" placeholder="Enter Intensity" value="{{I}}">
-        <label for="input2">Enter the resistance of the bulb:</label>
-        <input type="number" id="input2" name="resistance" placeholder="Enter Resistance" value="{{R}}">
-        <button type="submit">Calculate</button>
-      </form>
-      <label for="ans">Answer (in watts):</label>
-      <input type="text" id="ans" value="{{power}}" readonly>
+    <h1>Calculating Power of a Lamp</h1>
+    <div class="Calculate">
+        <form action="{% url 'home' %}" method="post">
+            {% csrf_token %}
+            <label>Intensity:</label><br>
+            <input type="text" name="intensity-input"><br>
+
+            <label>Resistance:</label><br>
+            <input type="text" name="resistance-input"><br>
+
+            <button type="submit">Calculate</button>
+
+            <p>The power of the lamp is: {{ output }}</p>
+        </form>
     </div>
-  </div>
 </body>
 </html>
