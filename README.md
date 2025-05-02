@@ -111,7 +111,8 @@ urlpatterns = [
 ]
 ```
 ## SERVER SIDE PROCESSING:
-![mathapp](https://github.com/user-attachments/assets/4f40a162-e087-4775-a98e-6a109226ef2f)
+![exp5 web](https://github.com/user-attachments/assets/39a6ac78-dafa-441b-bae6-014f2a1ed54a)
+
 
 ## HOMEPAGE:
 ![Screenshot 2025-05-02 170344](https://github.com/user-attachments/assets/c348fe2e-6eb8-4892-bc6f-30e230121105)
